@@ -1,0 +1,70 @@
+# VolSurface Configuration
+# All parameters centralised here; override via env vars or CLI for production.
+
+api:
+  base_url: "https://www.deribit.com/api/v2/public"
+  testnet_url: "https://test.deribit.com/api/v2/public"
+  timeout_seconds: 10.0
+  rate_limit_delay: 0.06       # ~16 req/s, well below Deribit's 20/s public limit
+  max_retries: 3
+  retry_backoff: 0.5
+
+market:
+  currencies: ["BTC", "ETH"]
+  risk_free_rate: 0.055        # ~5.5% USD risk-free (USD T-bill proxy)
+  carry_rate: 0.0              # BTC perpetual funding baked into index
+  day_count: 365.25            # actual/365.25 convention
+
+surface:
+  min_tte_days: 1              # filter options expiring < 1 day
+  max_tte_years: 2.0
+  min_open_interest: 0         # contracts (0 = no filter)
+  max_spread_pct: 0.40         # skip if bid-ask > 40% of mid
+  min_strikes_per_expiry: 5
+  min_iv: 0.01                 # 1% floor
+  max_iv: 5.00                 # 500% cap (handles BTC tails)
+
+svi:
+  arb_penalty: 1.0e4           # Lee-bound & butterfly penalty weight
+  lee_penalty: 1.0e4
+  de_maxiter: 300              # differential evolution iterations
+  de_popsize: 15
+  nm_maxiter: 2000
+
+sabr:
+  beta: 0.5                    # CEV exponent fixed during calibration
+  # 0 = Normal, 0.5 = Stochastic Normal, 1.0 = Log-normal
+
+iv_solver:
+  method: "auto"               # "halley" | "brent" | "auto"
+  max_iter: 50
+  tol: 1.0e-8
+
+greeks:
+  # Finite-difference step for numerical Greeks (fraction of sigma)
+  fd_bump_sigma: 0.01          # 1 vol point
+  fd_bump_spot: 0.001          # 0.1% spot move
+
+backtester:
+  # Deribit fee schedule (as fraction of underlying per contract)
+  maker_fee: 0.0003            # 0.03%
+  taker_fee: 0.0003            # 0.03%
+  perp_fee: 0.0005             # 0.05% (perp swap for delta hedge)
+  settlement_fee: 0.00015      # 0.015%
+  max_fee_pct_premium: 0.125   # fee capped at 12.5% of option value
+
+  # Delta-hedge rebalancing
+  hedge_threshold_delta: 0.05  # rebalance if |portfolio delta| > 0.05
+  hedge_frequency_hours: 1.0   # or time-based if threshold not breached
+
+  # Slippage model: linear in order size
+  slippage_bps_per_contract: 1.0  # 1 bp per contract of options
+
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed"
+  results: "results"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s │ %(levelname)-8s │ %(name)-22s │ %(message)s"
