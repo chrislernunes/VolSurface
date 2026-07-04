@@ -211,35 +211,6 @@ jupyter lab
 
 ---
 
-## Resume bullets
-
-```
-• Built VolSurface: production Python engine for Deribit BTC/ETH options —
-  Halley's-method IV solver (cubic convergence, 3–5 iter) with Brent
-  bracketed fallback + re-pricing verification; SVI calibration with
-  hard no-arbitrage enforcement (Lee moment + butterfly density); full
-  analytical Greeks to 3rd order (Vanna, Volga, Charm, Speed, Zomma).
-  Zero mypy errors. 1,695 tests, 93% coverage.
-
-• Diagnosed and fixed a production IV solver bug: the original floor-clip
-  in _to_call_price() silently substituted an incorrect price for deep-OTM
-  near-expiry options, causing Halley's method to converge to a plausible-
-  but-wrong σ without triggering any warning. Fix: remove the clip, verify
-  convergence by re-pricing, fall back to Brent when re-pricing fails.
-
-• Implemented SVI slice-by-slice calibration using differential evolution
-  (global) + Nelder-Mead (local) with inverse-spread-variance weighting;
-  calibration RMSE < 0.3 vol pts per expiry. Automatic post-fit calendar
-  and butterfly arb audit after every surface construction.
-
-• Achieved ~100× speedup on batch Black-76 pricing via Numba JIT with
-  parallel loop execution; NumPy fallback preserves correctness when Numba
-  is unavailable. Parametric stress test suite covers 1,222 input
-  combinations across forwards, moneyness, tenors, and vol regimes.
-```
-
----
-
 ## References
 
 1. Gatheral, J. (2004). *A parsimonious arbitrage-free implied volatility parameterization.* Global Derivatives & Risk Management.
