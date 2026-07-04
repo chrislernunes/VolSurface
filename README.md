@@ -223,4 +223,4 @@ jupyter lab
 
 ---
 
-*Author: Chrisler Nunes — Mumbai · [chrislernunes.onrender.com](https://chrislernunes.onrender.com)*
+*Author: Chrisler Nunes — Mumbai · [chrisler.xyz](https://chrisler.xyz)*
