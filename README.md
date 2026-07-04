@@ -1,6 +1,6 @@
 # VolSurface
 
-**Production-grade volatility surface construction and options analytics for Deribit BTC/ETH options.**
+**Volatility surface construction and options analytics for Deribit BTC/ETH options.**
 
 [![Tests](https://img.shields.io/badge/tests-1695%20passing-brightgreen)]()
 [![Coverage](https://img.shields.io/badge/coverage-93%25-brightgreen)]()
