@@ -1,0 +1,43 @@
+# VolSurface — Python dependency manifest
+# Install: pip install -r requirements.txt
+# Tested: Python 3.11+
+
+# ── Core scientific stack ───────────────────────────────────────────────────
+numpy>=1.26.0
+pandas>=2.1.0
+scipy>=1.11.0
+
+# ── Performance ─────────────────────────────────────────────────────────────
+numba>=0.58.0          # JIT-compiled BS pricing in backtester
+
+# ── Visualisation ───────────────────────────────────────────────────────────
+matplotlib>=3.8.0
+plotly>=5.18.0         # interactive 3D surfaces
+kaleido>=0.2.1         # plotly static image export
+
+# ── Networking ──────────────────────────────────────────────────────────────
+requests>=2.31.0
+urllib3>=2.1.0
+websockets>=12.0       # async Deribit WebSocket (optional real-time feed)
+aiohttp>=3.9.0
+
+# ── Configuration ───────────────────────────────────────────────────────────
+PyYAML>=6.0.1
+python-dotenv>=1.0.0
+
+# ── Notebooks ───────────────────────────────────────────────────────────────
+jupyter>=1.0.0
+jupyterlab>=4.0.0
+ipywidgets>=8.1.0
+nbformat>=5.9.0
+
+# ── Development / testing ───────────────────────────────────────────────────
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.12.0
+isort>=5.13.0
+mypy>=1.7.0
+
+# ── Optional data sources ───────────────────────────────────────────────────
+# ccxt>=4.2.0           # alternative exchange connectors
+# pandas-datareader>=0.10.0
