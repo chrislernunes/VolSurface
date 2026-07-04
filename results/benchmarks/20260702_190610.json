@@ -1,0 +1,36 @@
+{
+  "timestamp_utc": "2026-07-02T19:06:10.973227+00:00",
+  "currency": "BTC",
+  "results_us": {
+    "pricing": {
+      "bs_price (scalar loop)": 35831.559000507696,
+      "batch_bs_price (vectorised)": 11.397499474696815,
+      "bs_delta (scalar loop)": 18645.10400017025,
+      "bs_vega (scalar loop)": 19286.902000312693,
+      "bs_volga (scalar loop)": 20015.295000048354
+    },
+    "iv": {
+      "compute_iv scalar (all)": 235060.15299994033,
+      "compute_iv scalar (near-ATM only)": 46574.75499960128,
+      "compute_iv scalar (OTM only)": 187593.5339985881,
+      "compute_iv_surface (DataFrame)": 269779.92900065146
+    },
+    "greeks": {
+      "compute() analytical (scalar loop)": 72881.18500146084,
+      "compute_surface_greeks() (DataFrame)": 105478.89699984808,
+      "numerical_greeks() finite-diff (n=200)": 106146.88799716532
+    },
+    "surface": {
+      "VolSurface.fit() (12 expiries, SVI)": 10850631.59999554,
+      "vol_grid() (80\u00d7n_expiries)": 76.84999945922755,
+      "check_calendar_arbitrage()": 467.56999945500866,
+      "check_butterfly_arbitrage()": 365.767499897629,
+      "calibration_summary()": 904.0825010742992,
+      "SVISliceFitter.fit() (1 slice, n=76)": 468077.3599946406,
+      "SABRFitter.fit() (1 slice, n=76)": 29381.140001351014
+    }
+  },
+  "failed_sections": [
+    "backtester"
+  ]
+}
